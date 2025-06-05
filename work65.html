@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>購物車練習</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .product {
+      margin-bottom: 20px;
+    }
+    img {
+      width: 150px;
+      height: auto;
+    }
+    button {
+      margin: 5px;
+    }
+    #totalDisplay {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>購物車練習</h2>
+  <button onclick="showTotal()">購物車總額</button>
+  <button onclick="clearCart()">清空購物車</button>
+
+  <div class="product">
+    <img src="https://hips.hearstapps.com/hmg-prod/images/instant-noodle-64d46422e4ac8.png?crop=0.500xw:1.00xh;0.0293xw,0&resize=640:*" alt="商品1">
+    <p>$100</p>
+    <button onclick="addToCart(100)">加入購物車</button>
+  </div>
+
+  <div class="product">
+    <img src="https://uploads-blog.icook.network/2022/03/198a096f-collage666666.jpg" alt="商品2">
+    <p>$120</p>
+    <button onclick="addToCart(120)">加入購物車</button>
+  </div>
+
+  <div id="totalDisplay">購物車總額是 $0</div>
+
+  <script>
+    let total = parseInt(localStorage.getItem('cartTotal')) || 0;
+    updateTotalDisplay();
+
+    function addToCart(price) {
+      console.log(`加入商品價格：$${price}`);
+      total += price;
+      localStorage.setItem('cartTotal', total);
+      updateTotalDisplay();
+      
+    }
+
+    function clearCart() {
+      total = 0;
+      localStorage.setItem('cartTotal', total);
+      showTotal();
+    }
+    function updateTotalDisplay() {
+        
+      }  
+
+      function showTotal() {
+        document.getElementById('totalDisplay').textContent = `購物車總額是 $${total}`;
+      }
+    
+  </script>
+</body>
+</html>
